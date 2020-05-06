@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Book an Appointment</title>
+    </head>
+     
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+   </script>
+    <body>
+            <select >
+                Treatment :<option value={{treatment}}>{{treatment}}</option>
+            </select><br>
+            <form method="POST">
+                {% csrf_token %}
+             <select id="staff"> 
+              {%for i in staf%} 
+             
+                 Staff :<option value={{i.staff_name}}>{{i.staff_name}}</option>
+             
+              {%endfor%}   
+             </select><br>
+             
+               
+                 
+                Outlet : <input id="o" type='text'   name='outlet'     placeholder='outlet'><br>
+                Date   : <input id="datepicker" type='text'   name='time'     placeholder='time'><br> 
+                Time : <input  type='time'   name='hour'     placeholder='time'><br>
+           
+                
+                 
+                <button  type="submit" onclick="getOption()">Register</button>
+             </form>
+    </body>
+
+
+    <script type="text/javascript">
+        function getOption(){
+            var sel = document.getElementById("staff");
+            // var v = document.getElementById("v");
+            var o = document.getElementById("o");
+            var t = document.getElementById("datepicker");
+            // var value = selector[selector.selectedIndex].value;
+            var v = "viki"
+            alert(v);
+            
+            $.ajax('http://127.0.0.1:8000/book_app_load', {
+    type: 'POST',  // http method
+    data: { staff:sel.value,test:v, csrfmiddlewaretoken: '{{ csrf_token }}',}, 
+     // data to submit
+    /* success: function (data, status, xhr) {
+        $('p').append('status: ' + status + ', data: ' + data);
+    },*/
+    error: function (jqXhr, textStatus, errorMessage) {
+            $('p').append('Error' + errorMessage);
+    }
+});
+        // alert(sel.value)
+    }
+    </script>
+</html>

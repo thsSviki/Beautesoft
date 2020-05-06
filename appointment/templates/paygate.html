@@ -1,0 +1,30 @@
+<html>
+    <head>
+    <title>Payment Gateway</title>
+    </head>
+    <body>
+    <h1>Show me the money!</h1>
+    <div class="but">
+    <form action="charge_appointment" method="post">
+        {% csrf_token%}
+    <h2>Buy for $.{{tot}}</h2>
+    
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ key }}"
+    data-description="BeauteSoft Charge"
+    data-amount=""
+    data-locale="auto">
+</script>
+</form>
+</div>
+
+</body>
+</html>
+<style>
+    h1{text-align: center;margin-top: 100px;}
+    h2{text-align: center;margin-top: 100px;}
+    .but{
+        text-align: center;
+        margin-top: 100px;
+    }
+</style>

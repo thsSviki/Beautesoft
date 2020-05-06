@@ -1,0 +1,19 @@
+<a style="float:right;" href="http://127.0.0.1:8000/logout">logout</a>
+
+
+{%for k,v in context.items%}
+
+Staff:<br>{{k}}<br>
+
+<p>Appointments:<br>{%for i in v%}
+{{i.customer_name}}<br>
+{{i.treatment}}<br>
+{{i.customer_address}}<br>
+{{i.customer_number}}<br>
+{{i.appointment_date}}<br>
+{{i.appointment_time}}<br></p>
+{%endfor%}
+
+{%endfor%}
+
+

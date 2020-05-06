@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Add Salon</title>
+    </head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+   </script>
+
+    <body>
+        <h1>Add Salon</h1>
+        
+            <form  method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <input type='text'   name='salon_name'     placeholder='salon name'><br> 
+                <input type='text'  name='branch'        placeholder='location'><br>
+                <input type='text'  name='contact_number'        placeholder='contact_number'><br>
+                <input type='text'  name='services'        placeholder='services'><br>
+                <input type='text'  name='opening_date'        placeholder='opening_date' id='datepicker'><br>
+                <input type='email'  name='email'        placeholder='email'><br>
+                
+                <input type='file'  name='salon_img'        placeholder='salon_img'><br>
+                
+                
+             <button type="submit">Add Salon</button>
+                
+            
+            </form>
+    </body>
+</html>
+<script>
+    var ct = 1;
+function new_link()
+{
+	ct++;
+	var div1 = document.createElement('div');
+	div1.id = ct;
+	// link to delete extended form elements
+	var delLink = '<div style="text-align:right;margin-right:65px"><a href="javascript:delIt('+ ct +')">Del</a></div>';
+	div1.innerHTML = document.getElementById('newlinktpl').innerHTML + delLink;
+	document.getElementById('newlink').appendChild(div1);
+}
+// function to delete the newly added set of elements
+function delIt(eleId)
+{
+	d = document;
+	var ele = d.getElementById(eleId);
+	var parentEle = d.getElementById('newlink');
+	parentEle.removeChild(ele);
+}
+
+</script>

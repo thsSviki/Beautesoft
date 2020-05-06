@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Services list</title>
+        <h1 >List of services</h1>
+        <button id="button" >Add Service</button>
+        <link rel="stylesheet" href='static/style.css'>
+    </head>
+    
+    <body >
+        
+        {%for i in service%}
+        <div class="container">
+        <img src="{{i.serivice_img.url}}" class="container__image" style="width: 200px;"/>
+        <div class="container_text">
+        <h3 >{{i.service_name}}</h3>
+        <p>${{i.service_price}}</p></div></div>
+        {%endfor%}
+    
+    </body>
+</html>
+<script>
+    document.getElementById("button").onclick = function(){
+        location.href="http://127.0.0.1:8000/add_service";
+    }
+</script>

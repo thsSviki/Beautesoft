@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Add staff</title>
+    </head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+   </script>
+
+    <body>
+        <h1>Add Staff</h1>
+        
+            <form  method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <input type='text'   name='staff_name'     placeholder='staff_name'><br> 
+                <input type='text'  name='job_title'        placeholder='job_title'><br>
+                <input type='text'  name='skills'        placeholder='skills'><br>
+                <input type='text'  name='branch'        placeholder='location'><br>
+                <input type='text'  name='contact_number'        placeholder='contact_number' ><br>
+                <input type='email'  name='email'        placeholder='email'><br>
+                <input type='file'  name='staff_img'        placeholder='staff_img'><br>
+                <input type='text'  name='address'        placeholder='address'><br>
+                <input type='text'  name='joining_date'        placeholder='joining_date' id="datepicker"><br>
+                <input type='text'  name='dob'        placeholder='dob'><br>
+                <select name='gender'>
+                <option value='male'>Male</option>
+                <option value='female'>Female</option></select><br>
+                <select name='shift'>
+                <option  value="7 to 14">7am to 2pm</option>
+                <option  value="14 to 21">2pm to 9pm</option></select><br>
+                <input type='text'  name='salon_name'        placeholder='salon_name'><br>
+                
+             
+                
+             <button type="submit">Add Staff</button>
+                
+           
+            </form>
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>Customers list</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <div class="w3-container">
+        <h1 >List of Staffs</h1>
+        <button id="button" >Add Staff</button>
+    </head>
+    
+    <body >
+        <table class="w3-table-all">
+            <thead>
+        <tr class="w3-blue">
+        <th>Staff name</th>
+        <th>Contact number</th>
+        <th>Branch</th>
+        <th>Job title</th>
+        <th>DOB</th>
+    </tr></thead>
+        {%for i in staff%}
+        <tr>
+            <div class="dropdown">
+            <th>{{i.staff_name}}</th>
+            <th>{{i.contact_number}}</th>
+            <th>{{i.branch}}</th>
+            <th>{{i.job_title}}</th>
+            <th>{{i.dob}}</th>
+            <th><input type="button" onclick="myFunction()" class="dropbtn" value="..."></th>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#home">view</a>
+                <a href="#about">edit</a>
+                <a href="#contact">Contact</a>
+              </div>
+        </div>
+        </tr>
+        
+        {%endfor%}
+    </table></div>
+    </body>
+</html>
+<script>
+    document.getElementById("button").onclick = function(){
+        location.href="http://127.0.0.1:8000/add_staff";
+    }
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<style>
+    button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color:blue;
+    text-align: center;
+    cursor: pointer;
+    margin-left:1000px ;
+    font-size: 18px;
+    margin-bottom: 60px;
+  }
+  
+   button:hover {
+    opacity: 0.7;
+  }
+  table,td,th{
+      border: 1px solid black;
+  }
+  
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float:right;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>

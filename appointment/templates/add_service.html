@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Add Service</title>
+    </head>
+
+    <body>
+        <h1>Add Service</h1>
+        
+            <form  method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type='text'   name='service_name'     placeholder='service_name'><br> 
+                <input type='text'  name='service_category'        placeholder='service_category'><br>
+                <input type='text'  name='service_price'        placeholder='service_price'><br>
+                <input type='text'  name='service_tax'        placeholder='service_tax'><br>
+                <input type='text'  name='discount'        placeholder='discount' ><br>
+                <input type='file'  name='serivice_img'        placeholder='serivice_img'><br>
+                
+             <button type="submit">Add Service</button>
+                
+           
+            </form>
+    </body>
+</html>
