@@ -1,0 +1,20 @@
+{%for i in results%}
+    <p >{{i.customer_name}}</p>
+    <p >{{i.email}}</p>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <form method="" action='gift'>
+        {%csrf_token%}
+        <button  type="submit" onclick="myFunction('{{i.customer_name}}','{{i.email}}')">Gift one Treatment</button>
+    </form>
+    {% endfor %}
+
+<script type="text/javascript">
+    function myFunction(a,b){
+        alert(a);
+        $.ajax('http://127.0.0.1:8000/results', {
+type: 'POST',  
+data: { name:a,email:b,csrfmiddlewaretoken: '{{ csrf_token }}',}, 
+});
+}
+</script>

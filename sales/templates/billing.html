@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <h1>BeauteSoft Register</h1>
+        
+            <form action='' method='post'>
+                {% csrf_token %}
+                
+                <input type='text'   name='area'     placeholder='area'><br>
+
+                <input type='email'  name='email'        placeholder='email'><br>
+                 
+                <input type="number"  name='pin'        placeholder='pin'><br>
+
+                <input type="number"  name='phone_number'        placeholder='ph_no'><br>
+               
+                <input type='text'  name='state'        placeholder='state'><br>
+
+                <input type='text'  name='remarks'        placeholder='remarks'><br>
+            
+                <form action=''>
+                    <input type="submit" value="Proceed">
+                </form><br>
+                
+            </form>
+    </body>
+</html>

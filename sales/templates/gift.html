@@ -1,0 +1,7 @@
+{%for i in gift%}
+<h4>Treatment : {{i.treatment}} </h4>
+<h4>Staff_name : {{i.assign_staff}}</h4><br>
+<form method="POST">
+    <button type="submit">Send</button>
+</form>
+{%endfor%}

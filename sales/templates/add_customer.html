@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Add Customer</title>
+    </head>
+
+    <body>
+        <h1>Add Customer</h1>
+        
+            <form  method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input type='text'   name='customer_name'     placeholder='customer_name'><br> 
+                <input type='text'  name='address'        placeholder='address'><br>
+                <input type='text'  name='contact_number'        placeholder='contact_number' ><br>
+                <input type='email'  name='email'        placeholder='email'><br>
+             
+                
+             <button type="submit">Add Customer</button>
+                
+           
+            </form>
+    </body>
+</html>

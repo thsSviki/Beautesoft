@@ -1,0 +1,23 @@
+<div class="topnav">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <form method="POST" >
+        {% csrf_token %}
+        <input id="name" type="text" placeholder="search friends...">
+        <button  type="submit" onclick="myFunction()">Search</button>
+    </form>
+    
+</div>
+<script type="text/javascript">
+    function myFunction(){
+        var sel = document.getElementById("name");
+        var viki = "viki"
+        alert(sel.value);
+        $.ajax('http://127.0.0.1:8000/friend_search', {
+type: 'POST',  // http method
+data: { name:sel.value,test:viki,csrfmiddlewaretoken: '{{ csrf_token }}',}, 
+error: function (jqXhr, textStatus, errorMessage) {
+        $('p').append('Error' + errorMessage);
+}
+});
+}
+</script>

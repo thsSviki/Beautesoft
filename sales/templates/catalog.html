@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Beautesoft</title>
+        
+    </head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <body>
+        <h1 style="align-items: center;">Catalog</h1>
+        <p><a href="http://127.0.0.1:8000/friend_search">Friends</a></p>
+        <p><a href="http://127.0.0.1:8000/topup">Topup</a></p>
+
+        
+    <div style="float;left;width: fit-content;">
+        {%for i in pro%}
+        <p>{{i.product_name}}</p><br>
+        <p>{{i.product_price}}</p><br>
+        <p><button type='button' onclick="myFunction('{{i.product_name}}','{{i.product_price}}')">Add To Cart</button></p>
+        {%endfor%}
+    </div>
+     <div style="float: right;">
+
+           
+        <h1>Cart</h1>
+    {%for i in items%}
+    
+    <p>{{i.product}} </p><br>
+    <p>{{i.price}} </p><br>
+    <button type='button' onclick="myRemoveFunction('{{i.product}}','{{i.price}}')">remove</button><br>
+    {%endfor%}
+   
+    <p>Total-{{total}}</p>
+    
+    <form action='billing'><input type=submit value=Checkout></form>
+    </div> 
+    </body>
+    <script>
+        function myFunction(product,price){
+            alert("item added");
+        $.ajax('http://127.0.0.1:8000/catalog', {
+        
+        type: 'POST',  
+        data: { product: product , price:price,csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+    });
+        window.location.reload();
+         }
+      function myRemoveFunction(product,price){
+            
+            alert(product);
+        $.ajax('http://127.0.0.1:8000/catalog', {
+        
+        type: 'POST',  
+        data: { r_product: product , r_price:price,csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+    });
+        alert(price);
+         }
+
+         function customerName(){
+            
+            var name = document.getElementById('customer');
+        $.ajax('http://127.0.0.1:8000/catalog', {
+        
+        type: 'POST',  
+        data: { name:name.value,csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+    });
+        
+         }
+     </script>
+</html>

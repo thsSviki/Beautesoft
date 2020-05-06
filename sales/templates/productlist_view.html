@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Products list</title>
+        <h1 >Products List</h1>
+        <button id="button" >Add Product</button>
+        <link rel="stylesheet" href='static/style.css'>
+    </head>
+    
+    <body >
+        
+        {%for i in product%}
+        <div class="container">
+        <img src="{{i.product_img.url}}" class="container__image" style="width: 200px;"/>
+        <div class="container_text">
+        <h3 >{{i.product_name}}</h3>
+        <p>${{i.product_price}}</p></div></div>
+        {%endfor%}
+    
+    </body>
+</html>
+<script>
+    document.getElementById("button").onclick = function(){
+        location.href="http://127.0.0.1:8000/add_product";
+    }
+</script>

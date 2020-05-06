@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>select customer</title>
+    </head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <body>
+        
+Select Customer :
+            <select id="customer">
+                {%for i in customer%}
+                <option value={{i.customer_name}}>{{i.customer_name}}</option>
+                {%endfor%}
+            </select>
+            <form method="POST" >
+            {%csrf_token%}
+            <button  onclick="getOption()">submit</button></form>
+        <script type="text/javascript">
+        function getOption(){
+            var sel = document.getElementById("customer");
+            var test = "test"
+            console.log(sel.value)
+            $.ajax('http://127.0.0.1:8000/select_customer', {
+    type: 'POST',  // http method
+    data: { customer:sel.value,test:test,csrfmiddlewaretoken: '{{ csrf_token }}',}, 
+     
+    error: function (jqXhr, textStatus, errorMessage) {
+            $('p').append('Error' + errorMessage);
+    }
+});
+            
+    }
+    </script>
+    </body>
+   
+</html>

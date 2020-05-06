@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Add Product</title>
+    </head>
+
+    <body>
+        <h1>Add Product</h1>
+
+            <form  method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type='text'   name='product_name'     placeholder='product_name'><br>
+                <input type='text'  name='product_category'        placeholder='product_category'><br>
+                <input type='text'  name='brand'        placeholder='brand'><br>
+                <input type='text'  name='product_size'        placeholder='product_size'><br>
+                <input type='text'  name='product_price'        placeholder='product_price' ><br>
+                <input type='text'  name='discount'        placeholder='discount' ><br>
+                <input type='text'  name='product_tax'        placeholder='product_tax' ><br>
+                <input type='file'  name='product_img'        placeholder='product_img'><br>
+                <input type='text'  name='expiry_date'        placeholder='expiry_date' ><br>
+                <input type='number'  name='stock'        placeholder='stock' ><br>
+
+             <button type="submit">Add Product</button>
+
+
+            </form>
+    </body>
+</html>

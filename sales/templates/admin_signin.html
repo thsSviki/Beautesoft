@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Admin Sign in</title>
+    </head>
+    <body>
+        <h1>Sign in to access Beautesoft Admin Dashboard</h1>
+        
+            <form  method='post'>
+                {% csrf_token %}
+                
+                <input type='text'   name='username'     placeholder='Username'><br>
+               
+                <input type='password'  name='password'        placeholder='Password'><br>
+            
+                
+                <input type="submit" value="SIGN IN">
+                
+            </form>
+            <p><a href="http://127.0.0.1:8000/reception_login">Login for Salon Receptionist  </a></p>
+            <p><a href="http://127.0.0.1:8000/manager_login">Login for Salon Manager  </a></p>
+    </body>
+</html>

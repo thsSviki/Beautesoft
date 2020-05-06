@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<style>
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h2>Payment methods</h2>
+
+
+<form method="POST">
+    {%csrf_token%}
+<input class="button" type="submit" value="prepaid" name="method1"/><br>
+<input class="button" type="submit" value="creditcard" name="method2"/><br>
+</form>
+<p><a href="http://127.0.0.1:8000/coupon">Have a coupon code?</a></p>
+
+</body>
+</html>
