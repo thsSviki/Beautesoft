@@ -27,7 +27,7 @@ class Create(APIView):
         password=request.data.get('password')
         user = Admin.objects.create(username=username,password=make_password(password))
         usr = User.objects.create_user(username=username,password=password)
-        return Response('created')
+        return Response({'Response':'created'})
         
 
 class Login(APIView):
@@ -47,7 +47,6 @@ class Login(APIView):
             if  user_exist:
                 if  check:
                     if user is not None:
-                        admin.name=username
                         login(request,user)
                         return HttpResponseRedirect('admin')
                 else:
@@ -62,7 +61,7 @@ class Logout(APIView):
         return HttpResponseRedirect('/')
 
 class AdminDashboard(APIView):
-    #permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser]
     def get(self, request):
         print(request.user)
         return render(request, 'admin_dashboard.html')
