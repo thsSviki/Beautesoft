@@ -294,83 +294,83 @@ class AddService(APIView):
                 return Response({"Response":str(e)})
 
 
-class Book_app(APIView):
-    permission_classes = [IsAdminUser]
-    def post(self, request):
+# class Book_app(APIView):
+#     permission_classes = [IsAdminUser]
+#     def post(self, request):
 
-        book.treatment=request.data.get('treatment')
-        book.time = request.data.get('time')
-        outlet = request.data.get('outlet')
-        return HttpResponseRedirect('book_app_load')
+#         book.treatment=request.data.get('treatment')
+#         book.time = request.data.get('time')
+#         outlet = request.data.get('outlet')
+#         return HttpResponseRedirect('book_app_load')
 
-    def get(self, request):
-        return render(request, 'book_app.html')
-book = Book_app()
+#     def get(self, request):
+#         return render(request, 'book_app.html')
+# book = Book_app()
 
-class Staff_load(APIView):
-    def get(self, request):
-        staf = Staff.objects.filter(expertise=book.treatment)
-        for i in staf:
-            k = Appointments.objects.filter(staff_id=i.staff_name)
-            print(k.staff_id)
-        return render(request, 'book_app_load.html',{"staf":staf,"treatment":book.treatment})
-    def post(self, request):
-        if request.data.get("test"):
-            s.staff = request.data.get('staff')
+# class Staff_load(APIView):
+#     def get(self, request):
+#         staf = Staff.objects.filter(expertise=book.treatment)
+#         for i in staf:
+#             k = Appointments.objects.filter(staff_id=i.staff_name)
+#             print(k.staff_id)
+#         return render(request, 'book_app_load.html',{"staf":staf,"treatment":book.treatment})
+#     def post(self, request):
+#         if request.data.get("test"):
+#             s.staff = request.data.get('staff')
 
-        free = App_req.objects.filter(staff=s.staff,time=request.data.get('time')).exists()
-        free1 = Appointments.objects.filter(staff_id=s.staff,time=request.data.get('time')).exists()
-        if not free:
-            if not free1:
-                try:
-                        customer_n=login.name
-                        treatment = book.treatment
-                        AppointmentReqCreation(s.staff,customer_n,treatment,time,outlet)
-                        return Response({"ok":"ok"})
+#         free = App_req.objects.filter(staff=s.staff,time=request.data.get('time')).exists()
+#         free1 = Appointments.objects.filter(staff_id=s.staff,time=request.data.get('time')).exists()
+#         if not free:
+#             if not free1:
+#                 try:
+#                         customer_n=login.name
+#                         treatment = book.treatment
+#                         AppointmentReqCreation(s.staff,customer_n,treatment,time,outlet)
+#                         return Response({"ok":"ok"})
 
-                except Exception as e:
+#                 except Exception as e:
 
-                    return Response(str(e))
-            else:
+#                     return Response(str(e))
+#             else:
 
-                return Response("data is already booked")
-        else:
+#                 return Response("data is already booked")
+#         else:
 
-            return Response("data is already booked")
-s = Staff_load()
+#             return Response("data is already booked")
+# s = Staff_load()
 
-class Crm(APIView):
-    def get(self, request):
-        return render(request, 'crm.html')
+# class Crm(APIView):
+#     def get(self, request):
+#         return render(request, 'crm.html')
 
-class Staff_login(APIView):
-    def get(self, request):
-        return render(request,"staff_login.html")
-    def post(self, request):
-        user_exist = Staff.objects.filter(email=request.data.get('email')).exists()
-        # ps = Staff.objects.filter(
-        #     email=request.data.get('email'),
-        #     password=request.data.get('password'))
-        if user_exist:
-            if  True:
-                staff = Staff.objects.get(email=request.data.get('email'))
-                obj_staff.n=staff.staff_name
-                return HttpResponseRedirect('staff_profile')
-            else:
-                return Response({"Response":"plz check ur email "})
-        else:
-            return Response("email is not valid")
-obj_staff = Staff_login()
+# class Staff_login(APIView):
+#     def get(self, request):
+#         return render(request,"staff_login.html")
+#     def post(self, request):
+#         user_exist = Staff.objects.filter(email=request.data.get('email')).exists()
+#         # ps = Staff.objects.filter(
+#         #     email=request.data.get('email'),
+#         #     password=request.data.get('password'))
+#         if user_exist:
+#             if  True:
+#                 staff = Staff.objects.get(email=request.data.get('email'))
+#                 obj_staff.n=staff.staff_name
+#                 return HttpResponseRedirect('staff_profile')
+#             else:
+#                 return Response({"Response":"plz check ur email "})
+#         else:
+#             return Response("email is not valid")
+# obj_staff = Staff_login()
 
 
-class Staff_profile(APIView):
-    authentication_classes = [TokenAuthentication,]
-    #permission_classes = [IsAuthenticated]
-    def get(self, request):
-        con = Appointment.objects.filter(assign_staff=obj_staff.n)
-        return render(request, "staff_profile.html",{"con":con})
-    def post(self, request):
-        pass
-        return Response({"Response":"Need to code"})
+# class Staff_profile(APIView):
+#     authentication_classes = [TokenAuthentication,]
+#     #permission_classes = [IsAuthenticated]
+#     def get(self, request):
+#         con = Appointment.objects.filter(assign_staff=obj_staff.n)
+#         return render(request, "staff_profile.html",{"con":con})
+#     def post(self, request):
+#         pass
+#         return Response({"Response":"Need to code"})
 
-pro = Staff_profile()
+# pro = Staff_profile()
